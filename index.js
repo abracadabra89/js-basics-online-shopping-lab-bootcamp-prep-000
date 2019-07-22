@@ -18,28 +18,19 @@ function setCart(c) {
 
 
 function viewCart() {
-  if (!cart.length) {
-    return console.log("Your shopping cart is empty.")
-  }
-  const itemsWithPrices = [];
-
-  for (let i = 0; i < cart.length; i++) {
-    var itemNames = Object.keys(cart[i]);
-    var itemName = itemNames[0];
-    var itemPrice = cart[i][itemName]
-
-    itemsWithPrices.push(`${itemName} at $${itemPrice}`)
-  }
-if (itemsWithPrices.length === 1) {
-    return console.log(`In your cart, you have ${itemsWithPrices.join()}.`)
-  } else if (itemsWithPrices.length === 2) {
-    return console.log(`In your cart, you have ${itemsWithPrices[0]} and ${itemsWithPrices.slice(-1)}.`)
+  if (cart.length === 0) {
+    console.log("Your shopping cart is empty.")
   } else {
-    return console.log(`In your cart, you have ${itemsWithPrices.slice(0,-1).join(', ')}, and ${itemsWithPrices.slice(-1)}.`)
+    var newArr = [];
+    for (var i = 0; i < cart.length; i++) {
+      var price = Object.keys(cart[i]);
+      for (let price in cart[i]) {
+        newArr.push(`${Object.keys(cart[i])} at $${cart[i][price]}`)
+      }
+    }
+    return console.log("In your cart, you have " + newArr.join(", ") + ".");
   }
-
 }
-
 
 function total() {
   if (cart.length !== 0) {
