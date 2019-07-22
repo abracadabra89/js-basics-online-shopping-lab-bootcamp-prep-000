@@ -29,6 +29,15 @@ function viewCart() {
 
     itemsWithPrices.push(`${itemName} at $${itemPrice}`)
   }
+if (itemsWithPrices.length === 1) {
+    return console.log(`In your cart, you have ${itemsWithPrices.join()}.`)
+  } else if (itemsWithPrices.length === 2) {
+    return console.log(`In your cart, you have ${itemsWithPrices[0]} and ${itemsWithPrices.slice(-1)}.`)
+  } else {
+    return console.log(`In your cart, you have ${itemsWithPrices.slice(0,-1).join(', ')}, and ${itemsWithPrices.slice(-1)}.`)
+  }
+
+}
 
 
 function total() {
