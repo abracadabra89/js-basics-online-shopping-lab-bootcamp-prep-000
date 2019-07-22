@@ -10,64 +10,42 @@ function setCart(c) {
 }
 
 function addToCart(itemName) {
-  var price =  Math.floor( Math.random(1, 101) * 100 );
-  var newItem = {[itemName]: itemPrice}
- cart.push(newItem);
- console.log(`${itemName} has been added to your cart.`);
- return cart;
+  var object = {
+    [itemName]: Math.floor(Math.random(1, 100) * 100)
+  };
+  cart.push(object);
+  console.log(`${itemName} has been added to your cart`);
+  return cart;
 }
 
-
-function viewCart() {
-  if (cart.length <= 0) {
-    return "Your shopping cart is empty.";
-  }
-
-  const itemsWithPrices = [];
-
-  for (let i = 0; i < cart.length; i++) {
-    var itemNames = Object.keys(cart[i]);
-    var itemName = itemNames[0];
-    var itemPrice = cart[i][itemName]
-
-    itemsWithPrices.push(`${itemName} at $${itemPrice}`)
-  }
-
-  if (itemsWithPrices.length === 1) {
-    console.log(`In your cart, you have ${itemsWithPrices.join()}.`);
-  } else if (itemsWithPrices.length === 2) {
-     console.log(`In your cart, you have ${itemsWithPrices[0]} and ${itemsWithPrices.slice(-1)}.`)
-  } else {
-   console.log(`In your cart, you have ${itemsWithPrices.slice(0,-1).join(', ')}, and ${itemsWithPrices.slice(-1)}.`)
-  }
-
-}
 function total() {
-  var total = 0;
-  for (let i = 0; i < cart.length; i++) {
-    var itemNames = Object.keys(cart[i]);
-    var itemName = itemNames[0];
-    total += parseInt(cart[i][itemName], 10);
-  }
-  return total;
-}
-
-function removeFromCart(item) {
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].hasOwnProperty(itemName)) {
-      cart =  cart.splice(i, 1);
+  if (cart.length !== 0) {
+    var sum = 0;
+    for (var i = 0; i < cart.length; i++) {
+      for (var item in cart[i]) {
+        sum += cart[i][item];        
+      }
     }
+    console.log(`The total value is ${sum}`);
+    
+    return sum;
   }
-
-  console.log("That item is not in your cart.");
+  
+  return -1; // Could be 0, this is up to you.
 }
 
 function placeOrder(cardNumber) {
-  if (cardNumber.length > 0) {
-    console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
+  if (cardNumber === undefined) {
+    return ("Sorry, we don't have a credit card on file for you.");
+  } else {
+  
+    var sum = total();
+    if (sum) {
+    console.log(`Your total cost is $${sum}, which will be charged to the card ${cardNumber}`);
+    } else {
+      console.log("Your shopping cart is empty.")
+    }
     cart = [];
     return cart;
-  } else {
-    console.log("Sorry, we don't have a credit card on file for you.");
   }
 }
