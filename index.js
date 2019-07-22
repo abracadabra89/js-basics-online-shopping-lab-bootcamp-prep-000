@@ -9,14 +9,13 @@ function setCart(c) {
   return cart;
 }
 
-function addToCart(itemName) {
-  var object = {
-    [itemName]: Math.floor(Math.random(1, 100) * 100)
-  };
-  cart.push(object);
-  console.log(`${itemName} has been added to your cart`);
-  return cart;
+  function addToCart(item) {
+ var newItem = {[item]: Math.floor( Math.random(1, 101) * 100 ) };
+ cart.push(newItem);
+ console.log(`${item} has been added to your cart.`);
+ return cart;
 }
+
 
 function total() {
   if (cart.length !== 0) {
