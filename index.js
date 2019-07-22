@@ -54,20 +54,14 @@ for (var i = 0; i < cart.length; i++) {
 
 
 function total() {
-  if (cart.length !== 0) {
-    var sum = 0;
-    for (var i = 0; i < cart.length; i++) {
-      for (var item in cart[i]) {
-        sum += cart[i][item];        
-      }
-    }
-    console.log(`The total value is ${sum}`);
-    
-    return sum;
+  let totalCost = 0;
+  for (let i = 0; i < cart.length; i++){
+    totalCost += cart[i].itemPrice;
   }
-  
-  return -1; // Could be 0, this is up to you.
+  return totalCost;
 }
+
+ 
 
 function placeOrder(cardNumber) {
   var emptyArray = [];
