@@ -64,12 +64,11 @@ function total() {
  
 
 function placeOrder(cardNumber) {
-  var emptyArray = [];
-  if (ccNum === undefined) {
-    console.log('We don\'t have a credit card on file for you to place your order.')
-  }
-  else {
-    console.log(`Your total cost is $${total()}, which will be charged to the card ${ccNum}.`)
-    setCart(emptyArray)
+  if (cardNumber){
+    let totalCost = total();
+    cart =[];
+    return`Your total cost is $${totalCost}, which will be charged to the card ${cardNumber}.`;
+  } else {
+    return "Sorry, we don't have a credit card on file for you.";
   }
 }
