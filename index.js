@@ -20,6 +20,16 @@ function viewCart() {
   if (!cart.length) {
     return console.log("Your shopping cart is empty.")
   }
+  const itemsWithPrices = [];
+
+  for (let i = 0; i < cart.length; i++) {
+    var itemNames = Object.keys(cart[i]);
+    var itemName = itemNames[0];
+    var itemPrice = cart[i][itemName]
+
+    itemsWithPrices.push(`${itemName} at $${itemPrice}`)
+  }
+
 
 function total() {
   if (cart.length !== 0) {
