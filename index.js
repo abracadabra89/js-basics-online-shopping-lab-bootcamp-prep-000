@@ -16,6 +16,10 @@ function setCart(c) {
  return cart;
 }
 
+function viewCart() {
+  if (!cart.length) {
+    return console.log("Your shopping cart is empty.")
+  }
 
 function total() {
   if (cart.length !== 0) {
