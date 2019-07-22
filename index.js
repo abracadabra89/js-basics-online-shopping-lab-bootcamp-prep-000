@@ -22,19 +22,26 @@ function setCart(c) {
 
 
 function viewCart() {
+  var array = [];
+
+  for ( let i = 0; i < cart.length; i++) {
+      array.push(`${cart[i].itemName} at $${cart[i].itemPrice}`)
+  }
   if (cart.length === 0) {
-    console.log("Your shopping cart is empty.")
-  } else {
-    var newArr = [];
-    for (var i = 0; i < cart.length; i++) {
-      var price = Object.keys(cart[i]);
-      for (let price in cart[i]) {
-        newArr.push(`${Object.keys(cart[i])} at $${cart[i][price]}`)
-      }
-    }
-    return console.log("In your cart, you have " + newArr.join(", ") + ".");
+    return `Your shopping cart is empty.`;}
+
+  if (cart.length === 1){
+    return `In your cart, you have ${cart[0].itemName} at $${cart[0].itemPrice}.`;
+  }
+
+  if (cart.length ===2){
+    return `In your cart, you have ${cart[0].itemName} at $${cart[0].itemPrice}, and ${cart[1].itemName} at $${cart[1].itemPrice}.`
+  }else{
+    let lastItem = array.pop();
+    return `In your cart, you have ${array.join(', ')}, and ${lastItem}.`
   }
 }
+
 function removeFromCart(item) {
 for (var i = 0; i < cart.length; i++) {
     if (cart[i].hasOwnProperty(item)) {
