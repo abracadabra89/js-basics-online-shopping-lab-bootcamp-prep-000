@@ -31,7 +31,7 @@ function viewCart() {
     return console.log("In your cart, you have " + newArr.join(", ") + ".");
   }
 }
-
+function removeFromCart(item) {
 for (var i = 0; i < cart.length; i++) {
     if (cart[i].hasOwnProperty(item)) {
       cart.splice(i, 1);
